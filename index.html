@@ -1,1 +1,220 @@
-hello
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SPC 노조 전략 자료실</title>
+    <style>
+        /* 모바일 최적화 및 기본 스타일 */
+        :root {
+            --primary-color: #003087; /* SPC 블루 */
+            --primary-dark: #00205b;
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-main: #222222;
+            --text-sub: #666666;
+            --accent-red: #e74c3c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent; /* 모바일 터치 하이라이트 제거 */
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* 앱 컨테이너 (스마트폰 뷰) */
+        .app-container {
+            width: 100%;
+            max-width: 500px; /* 태블릿/PC에서도 모바일 폭 유지 */
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            min-height: 100vh;
+        }
+
+        /* 상단 헤더 */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 45px 25px 35px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 8px 20px rgba(0, 48, 135, 0.25);
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        /* 메인 메뉴 리스트 */
+        .menu-list {
+            flex: 1;
+            padding: 0 20px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* 메뉴 카드 버튼 디자인 */
+        .menu-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: var(--card-bg);
+            padding: 22px 24px;
+            border-radius: 18px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 중요도 표시 (첫 번째 카드 강조) */
+        .menu-card:first-child {
+            border-left: 5px solid var(--primary-color);
+        }
+
+        /* 터치 및 호버 효과 */
+        .menu-card:active, .menu-card:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+            background-color: #fff;
+        }
+
+        /* 카드 내부 텍스트 스타일 */
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            background-color: #eef4ff;
+            padding: 4px 8px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            width: fit-content;
+        }
+        
+        .badge.alert {
+            color: var(--accent-red);
+            background-color: #fff0ef;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            line-height: 1.3;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            line-height: 1.45;
+            word-break: keep-all;
+        }
+
+        /* 화살표 아이콘 */
+        .arrow {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #d1d1d1;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        /* 하단 푸터 */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: #aaa;
+            background-color: var(--bg-color);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="header">
+            <h1>SPC 배송노조<br>전략 상황실</h1>
+            <p>2026년 임단협 승리를 위한 핵심 자료</p>
+        </header>
+
+        <nav class="menu-list">
+            
+            <a href="../data/spc_report_2026.html" class="menu-card">
+                <span class="badge">필독 • 핵심 전략</span>
+                <span class="card-title">2026년 임단협 총괄 전략 보고서</span>
+                <span class="card-desc">
+                    안전운임제 재도입과 시장 환경 변화에 따른<br>임금 및 단체협약 필승 로드맵
+                </span>
+                <span class="arrow">›</span>
+            </a>
+
+            <a href="../data/spc_cost_analysis_2025.html" class="menu-card">
+                <span class="badge alert">비용 급등 경고</span>
+                <span class="card-title">차량 운영 비용(TCO) 정밀 분석</span>
+                <span class="card-desc">
+                    1억 원에 육박하는 트럭값과 유지비 폭등,<br>적자 운행을 증명하는 객관적 데이터
+                </span>
+                <span class="arrow">›</span>
+            </a>
+
+            <a href="../data/spc_strategy_report_2026.html" class="menu-card">
+                <span class="badge">현장 이슈 대응</span>
+                <span class="card-title">통합 배송 체계 대응 전략</span>
+                <span class="card-desc">
+                    쉐이크쉑 및 브랜드 통합 배송에 따른<br>실질 소득 보전 및 추가 수당 요구안
+                </span>
+                <span class="arrow">›</span>
+            </a>
+
+            <a href="../data/spc_strategy_2025.html" class="menu-card">
+                <span class="badge">지피지기</span>
+                <span class="card-title">SPC그룹 경영 실적 심층 분석</span>
+                <span class="card-desc">
+                    파리크라상 및 SPC GFS의 재무 건전성 분석<br>및 지불 능력 검증 보고서
+                </span>
+                <span class="arrow">›</span>
+            </a>
+
+        </nav>
+
+        <footer class="footer">
+            &copy; 2026 SPC Logistics Union Strategy Team
+        </footer>
+    </div>
+
+</body>
+</html>
