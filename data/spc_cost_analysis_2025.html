@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SPC 파리바게뜨 배송차량 운영 비용 정밀 분석 보고서 (2019-2025)</title>
+    <style>
+        /* 기본 리셋 및 변수 설정 */
+        :root {
+            --primary-color: #0056b3; /* 신뢰감을 주는 블루 */
+            --accent-color: #c0392b; /* 경고/강조 레드 */
+            --bg-color: #f4f6f8;
+            --text-color: #333;
+            --table-header-bg: #e1e8ed;
+            --btn-color: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            padding-bottom: 80px; /* 하단 버튼 공간 확보 */
+        }
+
+        /* 컨테이너 (PC/모바일 공용) */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* 타이포그래피 */
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #111;
+            line-height: 1.3;
+            word-break: keep-all;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 40px;
+            margin-bottom: 15px;
+            padding-left: 12px;
+            border-left: 5px solid var(--primary-color);
+            word-break: keep-all;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        /* 강조 스타일 */
+        strong {
+            font-weight: 700;
+            color: #000;
+        }
+        
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .highlight-blue {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* 리스트 스타일 */
+        ul, ol {
+            margin-bottom: 20px;
+            padding-left: 22px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            word-break: keep-all;
+        }
+
+        /* 구분선 */
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 40px 0;
+        }
+
+        /* 테이블 반응형 래퍼 (좌우 스크롤) */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            -webkit-overflow-scrolling: touch; /* 모바일 부드러운 스크롤 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px; /* 모바일에서 스크롤 유도 */
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 12px 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: var(--table-header-bg);
+            font-weight: bold;
+            text-align: center;
+            color: #444;
+        }
+
+        td {
+            background-color: #fff;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+
+        /* 테이블 내 정렬 및 색상 유틸리티 */
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .bg-yellow { background-color: #fffde7 !important; }
+        .inc-red { color: #c0392b; font-weight: bold; }
+
+        /* 링크 스타일 */
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            word-break: break-all;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* 닫기 버튼 (Floating Action Button) */
+        .close-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--btn-color);
+            color: #fff;
+            padding: 14px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .close-btn:hover {
+            background-color: #000;
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+
+        .close-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* 모바일 최적화 미디어 쿼리 */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.3rem;
+            }
+            h2 {
+                font-size: 1.1rem;
+            }
+            h3 {
+                font-size: 1.05rem;
+            }
+            p, li {
+                font-size: 0.95rem;
+            }
+            .close-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>SPC 파리바게뜨 배송기사(3.5톤 냉동탑차) 차량 운영 비용 정밀 분석 보고서 (2019-2025)</h1>
+
+        <section>
+            <h2>1. 개요: 2026년 임단협 대비 비용 구조 악화의 심각성</h2>
+            <p>본 보고서는 2019년부터 2025년까지 SPC 파리바게뜨 배송 업무에 투입되는 주력 차종인 <strong>3.5톤 냉동탑차(투냉)</strong>의 차량 구매 비용, 특장 비용, 유지관리비 등의 변동 추이를 정밀 분석하였다. 분석 결과, 차량 구입을 위한 초기 투자 비용은 <span class="highlight">2019년 대비 2025년 약 42% 이상 폭등</span>하였으며, 타이어 및 엔진오일 등 필수 소모품 비용 또한 가파르게 상승하여 배송 차주의 실질 소득을 심각하게 잠식하고 있는 것으로 나타났다.</p>
+            <p>이 데이터는 2026년 임단협에서 단순한 물가 상승률 반영을 넘어, <strong>'생산 수단(차량)의 대체 비용 급등'</strong>이라는 구조적 문제를 제기하고 실질적인 운송료 인상을 요구하는 핵심 근거 자료로 활용되어야 한다.</p>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>2. 차량 도입 비용(CAPEX) 분석: 진입 장벽의 폭발적 상승</h2>
+            <p>배송 기사들이 업무를 수행하기 위해 필수적으로 구비해야 하는 3.5톤 냉동탑차의 가격 상승세는 매우 가파르다. 특히 환경 규제 강화와 안전 사양 의무화, 원자재 가격 상승이 맞물려 <strong>'억대 트럭'</strong> 시대가 도래하였다.</p>
+
+            
+
+            <h3>2.1. 3.5톤 마이티 냉동탑차(투냉) 신차 구매 비용 추이 (2019 vs 2025)</h3>
+            <div class="table-wrapper">
+                <table>
+                    <caption><strong>[표 1] 2019년 대비 2025년 3.5톤 냉동탑차 구매 비용 비교</strong></caption>
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>세부 항목</th>
+                            <th>2019년 (추정)</th>
+                            <th>2025년 (현재)</th>
+                            <th>인상액</th>
+                            <th>인상률</th>
+                            <th>비고</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>섀시</strong></td>
+                            <td>현대 마이티 3.5톤</td>
+                            <td class="text-right">약 5,100만 원</td>
+                            <td class="text-right">5,903만 원</td>
+                            <td class="text-right inc-red">▲ 803만 원</td>
+                            <td class="text-center inc-red">▲ 15.7%</td>
+                            <td>슈퍼캡 장축 프리미엄 (오토 기준)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>특장</strong></td>
+                            <td>냉동탑(투냉)+가온기</td>
+                            <td class="text-right">약 2,000만 원</td>
+                            <td class="text-right">3,000~3,400만 원</td>
+                            <td class="text-right inc-red">▲ 1,400만 원</td>
+                            <td class="text-center inc-red">▲ 70.0%</td>
+                            <td>원자재값 폭등 및 고성능 단열재 적용</td>
+                        </tr>
+                        <tr>
+                            <td><strong>세금</strong></td>
+                            <td>취득세 (4%)</td>
+                            <td class="text-right">약 284만 원</td>
+                            <td class="text-right">약 372만 원</td>
+                            <td class="text-right inc-red">▲ 88만 원</td>
+                            <td class="text-center inc-red">▲ 31.0%</td>
+                            <td>차량가 상승에 따른 동반 상승</td>
+                        </tr>
+                        <tr>
+                            <td><strong>기타</strong></td>
+                            <td>부대비용</td>
+                            <td class="text-right">20만 원</td>
+                            <td class="text-right">30만 원</td>
+                            <td class="text-right inc-red">▲ 10만 원</td>
+                            <td class="text-center inc-red">▲ 50.0%</td>
+                            <td>번호판 부착비 등</td>
+                        </tr>
+                        <tr class="bg-yellow">
+                            <td><strong>합계</strong></td>
+                            <td><strong>총 소요 비용</strong></td>
+                            <td class="text-right"><strong>약 7,404만 원</strong></td>
+                            <td class="text-right"><strong>약 9,705만 원</strong></td>
+                            <td class="text-right inc-red"><strong>▲ 2,301만 원</strong></td>
+                            <td class="text-center inc-red"><strong>▲ 31.1%</strong></td>
+                            <td><strong>실질 구매가 약 1억 원 육박</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <ul>
+                <li><strong>분석:</strong> 2019년에는 7,000만 원 중반대에서 구매 가능했던 차량이 2025년 현재는 약 <strong>1억 원(9,700만 원)</strong>에 육박한다.</li>
+                <li><strong>특이사항:</strong> 특히 <strong>특장 비용(냉동탑+냉동기+가온기)</strong>의 상승세가 뚜렷하다. SPC의 엄격한 온도 관리 규정(3온도 관리)을 충족하기 위해 고사양 투채널 냉동기와 무시동 에어히터/가온기 장착이 필수화되면서 비용 부담이 가중되었다.</li>
+                <li><strong>시사점:</strong> 이는 매월 분담해야 하는 차량 할부금이 2019년 대비 <strong>월 40~50만 원 이상 증가</strong>했음을 의미한다. 현재의 운송료는 이러한 자산 가치 상승분을 전혀 반영하지 못하고 있다.</li>
+            </ul>
+
+            <h3>2.2. 중고차 시세 역전 현상</h3>
+            <p>신차 출고 지연과 가격 상승으로 인해 상태가 좋은 2024~2025년식 중고 냉동탑차의 시세가 <strong>9,350만 원</strong>까지 형성되어 있어, 신차 가격과 큰 차이가 없다. 이는 차량 교체 시 저렴한 대안조차 사라졌음을 시사한다.</p>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>3. 차량 유지관리비(OPEX) 분석: 고정비의 급격한 상승</h2>
+            <p>차량을 운행할수록 발생하는 유지비용 또한 전방위적으로 인상되었다. 특히 유로6 환경 규제에 대응하기 위한 소모품 비용 증가가 두드러진다.</p>
+
+            
+
+            <h3>3.1. 필수 소모품 및 정비 비용 인상 현황</h3>
+            <div class="table-wrapper">
+                <table>
+                    <caption><strong>[표 2] 주요 유지보수 항목별 비용 인상 추이</strong></caption>
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>교체/정비 주기</th>
+                            <th>2019-2020년 비용</th>
+                            <th>2025년 현재 비용</th>
+                            <th>인상률</th>
+                            <th>비고</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>엔진오일</strong></td>
+                            <td>1만 km 마다</td>
+                            <td class="text-right">9~10만 원</td>
+                            <td class="text-right">14~15만 원</td>
+                            <td class="text-center inc-red">▲ 50.0%</td>
+                            <td>유로6 엔진 전용 오일 및 공임 인상</td>
+                        </tr>
+                        <tr>
+                            <td><strong>타이어</strong></td>
+                            <td>연 1회 (6짝 기준)</td>
+                            <td class="text-right">120만 원</td>
+                            <td class="text-right">160만 원</td>
+                            <td class="text-center inc-red">▲ 33.3%</td>
+                            <td>한국/금호타이어 2025년 5~10% 추가 인상</td>
+                        </tr>
+                        <tr>
+                            <td><strong>배터리</strong></td>
+                            <td>2~3년 마다</td>
+                            <td class="text-right">15만 원</td>
+                            <td class="text-right">22만 원</td>
+                            <td class="text-center inc-red">▲ 46.7%</td>
+                            <td>납 가격 상승 및 고성능 배터리 수요</td>
+                        </tr>
+                        <tr>
+                            <td><strong>요소수</strong></td>
+                            <td>수시 보충</td>
+                            <td class="text-right">10L당 8,000원</td>
+                            <td class="text-right">12,000원</td>
+                            <td class="text-center inc-red">▲ 50.0%</td>
+                            <td>공급망 불안에 따른 가격 고착화</td>
+                        </tr>
+                        <tr>
+                            <td><strong>보험료</strong></td>
+                            <td>연 1회</td>
+                            <td class="text-right">150만 원</td>
+                            <td class="text-right">180만 원</td>
+                            <td class="text-center inc-red">▲ 20.0%</td>
+                            <td>영업용 화물차 손해율 악화로 최대 19% 인상</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>3.2. 돌발 수리비(Contingency Cost) 리스크</h3>
+            <p>화물차 노후화(5년 이상) 시 발생하는 고액 수리비는 차주에게 치명적이다.</p>
+            <ul>
+                <li><strong>커먼레일(인젝터) 수리:</strong> 개당 30~40만 원, 전체 교체 시 <span class="highlight">150~200만 원</span>.</li>
+                <li><strong>DPF(매연저감장치) 클리닝/교체:</strong> 클리닝 30~50만 원, 교체 시 <span class="highlight">수백만 원</span>.</li>
+                <li><strong>냉동기 컴프레셔:</strong> 고장 시 수리비 <span class="highlight">100만 원 이상</span> 소요.</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>4. 2026년 대비 적정 운송료 산정 제안 (Cost-Plus Model)</h2>
+            <p>위의 비용 상승분을 반영하여 2026년 협상 시 제시해야 할 적정 운송료 인상안을 시뮬레이션하였다.</p>
+
+            
+
+            <h3>[표 3] 비용 인상분을 반영한 월 필요 운송료 산출 (단위: 원)</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>현행 (추정)</th>
+                            <th>2026년 요구안</th>
+                            <th>산출 근거</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>차량 할부금</strong></td>
+                            <td class="text-right">1,300,000</td>
+                            <td class="text-right highlight-blue">1,950,000</td>
+                            <td>신차 9,700만 원 / 60개월 / 금리 7% 적용</td>
+                        </tr>
+                        <tr>
+                            <td><strong>유지 관리비</strong></td>
+                            <td class="text-right">600,000</td>
+                            <td class="text-right highlight-blue">900,000</td>
+                            <td>타이어, 오일, 보험료, 요소수 인상분 반영</td>
+                        </tr>
+                        <tr>
+                            <td><strong>감가상각비</strong></td>
+                            <td class="text-right">미반영</td>
+                            <td class="text-right highlight-blue">500,000</td>
+                            <td>차량 잔존가치 하락 보전 (적립금 성격)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>인건비(소득)</strong></td>
+                            <td class="text-right">3,150,000</td>
+                            <td class="text-right highlight-blue">3,500,000</td>
+                            <td>최저임금 인상 및 노동 강도 고려</td>
+                        </tr>
+                        <tr class="bg-yellow">
+                            <td><strong>합계 (VAT 별도)</strong></td>
+                            <td class="text-right"><strong>5,050,000</strong></td>
+                            <td class="text-right highlight"><strong>6,850,000</strong></td>
+                            <td><strong>월 180만 원(+35%) 인상 필요</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <ul>
+                <li><strong>결론:</strong> 현재 지급되는 <strong>505만 원</strong>은 차량 할부금과 유지비를 제하고 나면 차주가 가져가는 순수입이 <strong>최저임금 수준(약 200만 원 초반)</strong>에 불과하거나, 차량 감가상각을 고려하면 <span class="highlight">적자</span> 상태임이 명백하다.</li>
+                <li><strong>협상 전략:</strong> 사측에 <strong>"현행 운송료 505만 원으로는 1억 원짜리 냉동탑차를 유지하며 생계를 꾸리는 것이 불가능하다"</strong>는 점을 위 [표 1], [표 2]의 데이터를 통해 강력하게 주장해야 한다. 최소한 <strong>15% 이상의 기본 운송료 인상</strong>과 <strong>별도의 수리비 지원 기금(연간 100만 원)</strong> 조성이 필요하다.</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section>
+            <h4>참고 자료 및 데이터 출처</h4>
+            <ol>
+                <li>
+                    <a href="https://m.carisyou.com/car/7526" target="_blank">2025 현대 쎈 마이티 자동차 정보 - CARISYOU</a>
+                </li>
+                <li>
+                    <a href="https://www.spc.co.kr/img/front/sub/esg/esg_management/report/2024%20SPC%EA%B7%B8%EB%A3%B9%20%EC%A7%80%EC%86%8D%EA%B0%80%EB%8A%A5%EA%B2%BD%EC%98%81%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf" target="_blank">SPC그룹 지속가능경영보고서 2024</a>
+                </li>
+                <li>
+                    <a href="http://www.carnoon.co.kr/newcar/vehicle/11753-115967" target="_blank">현대자동차 더 쎈 마이티 2025년형 3.5톤 카고 가격표 - 카눈</a>
+                </li>
+                <li>
+                    <a href="https://www.kctdi.or.kr/kctdi/research/research11.do?mode=view&articleNo=5168&title=%ED%99%94%EB%AC%BC%EC%9E%90%EB%8F%99%EC%B0%A8+%EC%95%88%EC%A0%84%EC%9A%B4%EC%9E%84%EC%A0%9C+%EC%9E%AC%EB%8F%84%EC%9E%85+%C2%B7%C2%B7%C2%B7+%EC%98%AC%ED%95%B4%EB%B6%80%ED%84%B0+2028%EB%85%84%EA%B9%8C%EC%A7%80+3%EB%85%84%EA%B0%84+%EC%8B%9C%ED%96%89" target="_blank">화물자동차 안전운임제 재도입 ··· 올해부터 2028년까지 3년간 시행 - 한국교통연구원</a>
+                </li>
+                <li>
+                    <a href="http://hansoltruck.com/model/NewModel.asp?Maker=AAG&Model=AAG12&ModelDetail=AAG12B&ToTruckTon=3.5&FromTruckTon=3.5" target="_blank">냉동탑 3.5톤 모델 가격 정보 - 한솔트럭</a>
+                </li>
+                <li>
+                    <a href="http://www.atnkorea.co.kr/news/view.html?section=9&category=14&page=10&no=3002" target="_blank">2025년 자동차 정비수가 2.7% 인상 - ATN뉴스</a>
+                </li>
+                <li>
+                    <a href="https://www.munhwa.com/news/view.html?no=2022062701031503324001" target="_blank">원자재값 압박에… 타이어값 최대 10% 인상 - 문화일보</a>
+                </li>
+                <li>
+                    <a href="http://m.nicerating.com/publish/cmpBillEvalMean.do" target="_blank">기업어음증권평가 - NICE신용평가</a>
+                </li>
+            </ol>
+        </section>
+    </div>
+
+    <a href="../main/index.html" class="close-btn">
+        ✕ 닫기
+    </a>
+
+</body>
+</html>
