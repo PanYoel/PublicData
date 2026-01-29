@@ -32,10 +32,10 @@
             min-height: 100vh;
         }
 
-        /* 앱 컨테이너 (스마트폰 뷰) */
+        /* 앱 컨테이너 */
         .app-container {
             width: 100%;
-            max-width: 500px; /* 태블릿/PC에서도 모바일 폭 유지 */
+            max-width: 500px;
             background-color: var(--bg-color);
             display: flex;
             flex-direction: column;
@@ -43,11 +43,11 @@
             min-height: 100vh;
         }
 
-        /* 상단 헤더 */
+        /* 상단 헤더 영역 */
         .header {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: white;
-            padding: 45px 25px 35px;
+            padding: 30px 25px 35px; /* 상단 여백 조정 */
             border-bottom-left-radius: 30px;
             border-bottom-right-radius: 30px;
             box-shadow: 0 8px 20px rgba(0, 48, 135, 0.25);
@@ -55,17 +55,40 @@
             text-align: left;
         }
 
+        /* 메인 이미지 (배너) 스타일 */
+        .header-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            object-fit: cover; /* 이미지가 찌그러지지 않게 */
+            display: block;
+        }
+
+        /* 노조 이름 (상위 타이틀) */
+        .union-label {
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0.9;
+            margin-bottom: 5px;
+            letter-spacing: -0.3px;
+            color: #eef4ff; /* 연한 하늘색 톤 */
+        }
+
+        /* 메인 타이틀 */
         .header h1 {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             font-weight: 800;
             margin-bottom: 8px;
-            line-height: 1.2;
+            line-height: 1.25;
             letter-spacing: -0.5px;
         }
 
         .header p {
             font-size: 0.95rem;
-            opacity: 0.9;
+            opacity: 0.85;
             font-weight: 400;
         }
 
@@ -78,7 +101,7 @@
             gap: 16px;
         }
 
-        /* 메뉴 카드 버튼 디자인 */
+        /* 메뉴 카드 버튼 */
         .menu-card {
             display: flex;
             flex-direction: column;
@@ -94,79 +117,27 @@
             overflow: hidden;
         }
 
-        /* 중요도 표시 (첫 번째 카드 강조) */
-        .menu-card:first-child {
-            border-left: 5px solid var(--primary-color);
-        }
+        .menu-card:first-child { border-left: 5px solid var(--primary-color); }
+        .menu-card:active, .menu-card:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 8px 15px rgba(0,0,0,0.08); background-color: #fff; }
 
-        /* 터치 및 호버 효과 */
-        .menu-card:active, .menu-card:hover {
-            transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.08);
-            background-color: #fff;
-        }
-
-        /* 카드 내부 텍스트 스타일 */
-        .badge {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            background-color: #eef4ff;
-            padding: 4px 8px;
-            border-radius: 6px;
-            margin-bottom: 8px;
-            width: fit-content;
-        }
+        /* 뱃지 및 텍스트 */
+        .badge { display: inline-block; font-size: 0.75rem; font-weight: 700; color: var(--primary-color); background-color: #eef4ff; padding: 4px 8px; border-radius: 6px; margin-bottom: 8px; width: fit-content; }
+        .badge.alert { color: var(--accent-red); background-color: #fff0ef; }
         
-        .badge.alert {
-            color: var(--accent-red);
-            background-color: #fff0ef;
-        }
+        .card-title { font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px; display: flex; align-items: center; line-height: 1.3; }
+        .card-desc { font-size: 0.9rem; color: var(--text-sub); line-height: 1.45; word-break: keep-all; }
+        .arrow { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: #d1d1d1; font-size: 1.2rem; font-weight: 700; }
 
-        .card-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            line-height: 1.3;
-        }
-
-        .card-desc {
-            font-size: 0.9rem;
-            color: var(--text-sub);
-            line-height: 1.45;
-            word-break: keep-all;
-        }
-
-        /* 화살표 아이콘 */
-        .arrow {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #d1d1d1;
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        /* 하단 푸터 */
-        .footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 0.8rem;
-            color: #aaa;
-            background-color: var(--bg-color);
-        }
-
+        .footer { text-align: center; padding: 20px; font-size: 0.8rem; color: #aaa; background-color: var(--bg-color); }
     </style>
 </head>
 <body>
 
     <div class="app-container">
         <header class="header">
+            <img src="image/union%20main%20image.jpg" alt="한국노총 화물운송 메인 이미지" class="header-image">
+            
+            <span class="union-label">한국노총 화물운송</span>
             <h1>SPC 배송노조<br>전략 상황실</h1>
             <p>2026년 임단협 승리를 위한 핵심 자료</p>
         </header>
